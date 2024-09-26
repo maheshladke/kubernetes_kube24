@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mc2
+spec:
+  containers:
+  - name: producer
+    image: kubebox85/producer-consumer:latest
+    command: ["/bin/sh","-c"]
+    args: ["./ipc -producer"]
+
+  - name: consumer
+    image: kubebox85/producer-consumer:latest
+    command: ["/bin/sh","-c"]
+    args: ["./ipc -consumer"]
+  restartPolicy: Never
